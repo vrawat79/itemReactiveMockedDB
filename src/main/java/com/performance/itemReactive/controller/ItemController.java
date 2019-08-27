@@ -26,10 +26,10 @@ public class ItemController {
 		return itemService.findByCategory(category);
 	}
 
-	@PostMapping(path = "/items")
-	public Flux<Item> createBulkItems(@RequestBody Flux<Item> itemFlux) {
-
-		return itemService.createAllItems(itemFlux);
-	}
+//	@PostMapping(path = "/items")
+//	public Flux<Item> createBulkItems(@RequestBody Flux<Item> itemFlux) {
+//
+//		return itemService.createAllItems(itemFlux);
+//	}
 
 }
