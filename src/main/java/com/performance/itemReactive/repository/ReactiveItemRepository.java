@@ -15,7 +15,8 @@ import reactor.core.publisher.Mono;
 @Component
 public class ReactiveItemRepository {
 
-	@Value("${mockedDBServicehost}")
+//	@Value("${mockedDBServicehost}")
+	@Value("54.186.12.241")
 	String mockedDbServiceHost;   
 
 	String url;

@@ -32,21 +32,6 @@ public class ReactiveItemService implements ItemService {
 //		// TODO Auto-generated method stub
 //		return reactiveItemRepo.save(item);
 //	}
-	
-	public static void main(String[] args) {
-		
-		boolean flag = false;
-		
-		if(flag) {
-			System.out.println("flag is true");
-		}else if(flag) {
-			System.out.println("flag is true2");
-		}else if(flag) {
-			System.out.println("flag is true");
-		}else {
-			System.out.println("flag is false");
-		}
-			
-	}
+
 
 }

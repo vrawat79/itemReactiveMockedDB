@@ -27,5 +27,11 @@ public class ItemController {
 //
 //		return itemService.createAllItems(itemFlux);
 //	}
+	
+	@GetMapping(path = "/health")
+	public String getHealth() {
+
+		return "UP";
+	}
 
 }
