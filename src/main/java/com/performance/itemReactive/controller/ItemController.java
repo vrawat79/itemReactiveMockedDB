@@ -16,7 +16,7 @@ public class ItemController {
 	@Autowired
 	private ItemService itemService;
 
-	@GetMapping(path = "/items/{category}")
+	@GetMapping(path = "/items/{category}", produces="application/stream+json")
 	public Flux<Item> getItemsbyCategory(@PathVariable String category) {
 
 		return itemService.findByCategory(category);

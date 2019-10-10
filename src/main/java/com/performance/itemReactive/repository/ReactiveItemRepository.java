@@ -17,28 +17,30 @@ public class ReactiveItemRepository {
 
 //	@Value("${mockedDBServicehost}")
 	@Value("54.186.12.241")
-	String mockedDbServiceHost;   
+	String mockedDbServiceHost;
 
 	String url;
-	WebClient webClient;  
-	
-	public ReactiveItemRepository() {
-		// TODO Auto-generated constructor stub
-		this.url = "http://" + mockedDbServiceHost + ":8080/items/Laptop";
-		this.webClient = WebClient.builder().baseUrl(url).build();       
-	}
-	
+	WebClient webClient;
+
+//	public ReactiveItemRepository() {
+//		// TODO Auto-generated constructor stub
+//		this.url = "http://" + mockedDbServiceHost + ":8080/items";
+//		this.webClient = WebClient.builder().baseUrl(url).build();       
+//	}
+
 	@PostConstruct
-    private void postConstruct() {
+	private void postConstruct() {
 		System.out.println("url: " + url);
-		this.url = "http://" + mockedDbServiceHost + ":8080/items/Laptop";
+		this.url = "http://" + mockedDbServiceHost + ":8080/items";
 		this.webClient = WebClient.builder().baseUrl(url).build();
 		System.out.println("url: " + url);
-    }
+	}
 
 	public Flux<Item> findByCategory(String category) {
-		
-		return webClient.get().uri("/").exchange().flatMapMany(response -> response.bodyToFlux(Item.class));
+		if(category.equalsIgnoreCase("catalogue")) {
+			return webClient.get().uri("/stream/" + category).exchange().flatMapMany(response -> response.bodyToFlux(Item.class));
+		}
+		return webClient.get().uri("/" + category).exchange().flatMapMany(response -> response.bodyToFlux(Item.class));
 	}
 
 	public Flux<Item> saveAll(Flux<Item> items) {
